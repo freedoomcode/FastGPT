@@ -308,7 +308,7 @@ const commonSplit = (props: SplitProps): SplitResponse => {
       text,
       step: 0,
       lastText: '',
-      mdTitle: `下文适用范围："${filename}"\n`
+      mdTitle: `下文与"${filename}"相关\n`
     }).map((chunk) => chunk?.replaceAll(codeBlockMarker, '\n') || ''); // restore code block
 
     const chars = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
