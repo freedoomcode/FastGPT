@@ -1,6 +1,20 @@
 {
   "feConfigs": {
-    "lafEnv": "https://laf.dev"
+    "lafEnv": "https://laf.dev",
+    "show_emptyChat": true,
+    "show_git": false,
+    "docUrl": "",
+    "openAPIDocUrl": "",
+    "systemTitle": "DNDC 知识库",
+    "concatMd": "",
+    "limit": {
+      "exportDatasetLimitMinutes": 0,
+      "websiteSyncLimitMinuted": 0
+    },
+    "scripts": [],
+    "favicon": "/favicon.ico",
+    "uploadFileMaxSize": 50,
+    "isPlus": false
   },
   "systemEnv": {
     "openapiPrefix": "fastgpt",
@@ -10,44 +24,17 @@
   },
   "llmModels": [
     {
-      "model": "gpt-3.5-turbo",
-      "name": "gpt-3.5-turbo",
+      "model": "gpt351106",
+      "name": "dfl-gpt-35-1106",
       "maxContext": 16000,
-      "avatar": "/imgs/model/openai.svg",
       "maxResponse": 4000,
       "quoteMaxToken": 13000,
       "maxTemperature": 1.2,
-      "charsPointsPrice": 0,
-      "censor": false,
-      "vision": false,
-      "datasetProcess": true,
-      "usedInClassify": true,
-      "usedInExtractFields": true,
-      "usedInToolCall": true,
-      "usedInQueryExtension": true,
-      "toolChoice": true,
-      "functionCall": true,
-      "customCQPrompt": "",
-      "customExtractPrompt": "",
-      "defaultSystemChatPrompt": "",
-      "defaultConfig": {}
-    },
-    {
-      "model": "gpt-4-0125-preview",
-      "name": "gpt-4-turbo",
-      "avatar": "/imgs/model/openai.svg",
-      "maxContext": 125000,
-      "maxResponse": 4000,
-      "quoteMaxToken": 100000,
-      "maxTemperature": 1.2,
-      "charsPointsPrice": 0,
+      "inputPrice": 0,
+      "outputPrice": 0,
       "censor": false,
       "vision": false,
       "datasetProcess": false,
-      "usedInClassify": true,
-      "usedInExtractFields": true,
-      "usedInToolCall": true,
-      "usedInQueryExtension": true,
       "toolChoice": true,
       "functionCall": false,
       "customCQPrompt": "",
@@ -56,21 +43,17 @@
       "defaultConfig": {}
     },
     {
-      "model": "gpt-4-vision-preview",
-      "name": "gpt-4-vision",
-      "avatar": "/imgs/model/openai.svg",
-      "maxContext": 128000,
+      "model": "llama3",
+      "name": "llama3",
+      "maxContext": 16000,
       "maxResponse": 4000,
-      "quoteMaxToken": 100000,
+      "quoteMaxToken": 13000,
       "maxTemperature": 1.2,
-      "charsPointsPrice": 0,
+      "inputPrice": 0,
+      "outputPrice": 0,
       "censor": false,
-      "vision": true,
-      "datasetProcess": false,
-      "usedInClassify": false,
-      "usedInExtractFields": false,
-      "usedInToolCall": false,
-      "usedInQueryExtension": false,
+      "vision": false,
+      "datasetProcess": true,
       "toolChoice": true,
       "functionCall": false,
       "customCQPrompt": "",
@@ -81,43 +64,24 @@
   ],
   "vectorModels": [
     {
-      "model": "text-embedding-3-large",
-      "name": "Embedding-2",
-      "avatar": "/imgs/model/openai.svg",
-      "charsPointsPrice": 0,
+      "model": "bce",
+      "name": "bce",
+      "inputPrice": 0,
+      "outputPrice": 0,
       "defaultToken": 512,
-      "maxToken": 3000,
-      "weight": 100,
-      "dbConfig": {},
-      "queryConfig": {},
-      "defaultConfig": {
-        "dimensions": 1024
-      }
-    },
-    {
-      "model": "text-embedding-3-small",
-      "name": "Embedding-2",
-      "avatar": "/imgs/model/openai.svg",
-      "charsPointsPrice": 0,
-      "defaultToken": 512,
-      "maxToken": 3000,
-      "weight": 100,
-      "dbConfig": {},
-      "queryConfig": {}
-    },
-    {
-      "model": "text-embedding-ada-002",
-      "name": "Embedding-2",
-      "avatar": "/imgs/model/openai.svg",
-      "charsPointsPrice": 0,
-      "defaultToken": 512,
-      "maxToken": 3000,
-      "weight": 100,
-      "dbConfig": {},
-      "queryConfig": {}
+      "maxToken": 800,
+      "weight": 100
     }
   ],
-  "reRankModels": [],
+  "reRankModels": [
+    {
+      "model": "bce-reranker",
+      "name": "检索重排",
+      "charsPointsPrice": 0,
+      "requestUrl": "http://192.168.83.183:6006/v1/rerank",
+      "requestAuth": "BCEEEEEEEEEEEE"
+    }
+  ],
   "audioSpeechModels": [
     {
       "model": "tts-1",

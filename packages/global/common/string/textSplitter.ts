@@ -5,6 +5,7 @@ export const CUSTOM_SPLIT_SIGN = '-----CUSTOM_SPLIT_SIGN-----';
 
 type SplitProps = {
   text: string;
+  filename?: string;
   chunkLen: number;
   overlapRatio?: number;
   customReg?: string[];
@@ -84,7 +85,7 @@ ${mdSplitString}
 };
 
 const commonSplit = (props: SplitProps): SplitResponse => {
-  let { text = '', chunkLen, overlapRatio = 0.2, customReg = [] } = props;
+  let { text = '', chunkLen, overlapRatio = 0.2, customReg = [], filename = '' } = props;
 
   const splitMarker = 'SPLIT_HERE_SPLIT_HERE';
   const codeBlockMarker = 'CODE_BLOCK_LINE_MARKER';
@@ -307,7 +308,7 @@ const commonSplit = (props: SplitProps): SplitResponse => {
       text,
       step: 0,
       lastText: '',
-      mdTitle: ''
+      mdTitle: `下文适用范围："${filename}"\n`
     }).map((chunk) => chunk?.replaceAll(codeBlockMarker, '\n') || ''); // restore code block
 
     const chars = chunks.reduce((sum, chunk) => sum + chunk.length, 0);

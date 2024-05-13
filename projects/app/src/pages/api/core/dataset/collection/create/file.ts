@@ -53,6 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     // 2. split chunks
     const { chunks } = splitText2Chunks({
       text: rawText,
+      filename: filename,
       chunkLen: chunkSize,
       overlapRatio: trainingType === TrainingModeEnum.chunk ? 0.2 : 0,
       customReg: chunkSplitter ? [chunkSplitter] : []
